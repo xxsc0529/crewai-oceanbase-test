@@ -1,0 +1,36 @@
+[project]
+name = "latest_ai_development"
+version = "0.1.0"
+description = "latest-ai-development using crewAI"
+authors = [{ name = "xxsc0529", email = "xxsc0529@163.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai==1.9.2",
+    "crewai-tools @ file:///Users/zyh/zyh-work/crewAI/dist/crewai_tools-1.9.2.tar.gz",
+    "pdfplumber>=0.10.0",
+    "openai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "pyobvector>=0.2.16",
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+latest_ai_development = "latest_ai_development.main:run"
+run_crew = "latest_ai_development.main:run"
+load_pdf_oceanbase = "latest_ai_development.oceanbase_rag.data_loader:load_pdf_oceanbase"
+rag_oceanbase = "latest_ai_development.main:run_rag_cli"
+oceanbase_rag_scenario = "latest_ai_development.main:run_full_scenario_cli"
+oceanbase_rag_test = "latest_ai_development.oceanbase_rag.data_loader:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/latest_ai_development"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,9 @@
+rag_search_task:
+  description: 针对用户问题「{query}」在文档库中做语义检索。回答需含相关原文/摘要、相似度（distance）、文档元信息。
+  expected_output: 结构化检索结果（片段、相似度、元信息），便于下一环节生成答案。
+  agent: semantic_search_agent
+
+rag_answer_task:
+  description: 在已有检索结果基础上，针对用户问题「{query}」生成最终答案。基于检索内容，不编造；不足则说明。
+  expected_output: 准确、简洁的文字答案，严格依据检索内容。
+  agent: rag_answer_agent
